@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -15,11 +16,12 @@ import { ChequeListComponent } from './cheques/cheque-list.component';
 import { ChequeDetailComponent } from './cheques/cheque-detail.component';
 import { ChequeService } from './cheques/shared/cheque.service';
 
+
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserModule,
-    //FormsModule,
+    DashboardModule, //eager loading
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
@@ -27,7 +29,7 @@ import { ChequeService } from './cheques/shared/cheque.service';
     AppComponent,
     AboutMeComponent,
     ChequeListComponent,
-    ChequeDetailComponent
+    ChequeDetailComponent,
   ],
   providers: [
     ChequeService,
