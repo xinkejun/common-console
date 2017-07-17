@@ -10,7 +10,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
+import { AboutMeComponent } from './about-me/about-me.component';
 import { ChequeListComponent } from './cheques/cheque-list.component';
 import { ChequeDetailComponent } from './cheques/cheque-detail.component';
 import { ChequeService } from './cheques/shared/cheque.service';
@@ -25,7 +25,7 @@ import { ChequeService } from './cheques/shared/cheque.service';
   ],
   declarations: [
     AppComponent,
-    AboutComponent,
+    AboutMeComponent,
     ChequeListComponent,
     ChequeDetailComponent
   ],

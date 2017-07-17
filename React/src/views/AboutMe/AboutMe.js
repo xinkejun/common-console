@@ -20,7 +20,12 @@ class AboutMe extends Component {
   render() {
     return (
       <div>
-        This is aboutMe
+        <h1>About Kejun Xin</h1>
+        <p>
+          Email: <a href="mailto:xinkejun@hotmail.com">xinkejun@hotmail.com</a> <br />
+          Linkedin: <a href="https://www.linkedin.com/in/kejun-xin-b32a0216">https://www.linkedin.com/in/kejun-xin-b32a0216</a><br />
+          Aboutme: <a href="https://about.me/xinkejun">https://about.me/xinkejun</a>
+        </p>
       </div>
     )
   }
