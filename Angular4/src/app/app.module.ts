@@ -1,39 +1,41 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-//import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
-import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { Router } from '@angular/router';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { AboutMeComponent } from './about-me/about-me.component';
-import { ChequeListComponent } from './cheques/cheque-list.component';
-import { ChequeDetailComponent } from './cheques/cheque-detail.component';
-import { ChequeService } from './cheques/shared/cheque.service';
 
+// Routing Module
+import { AppRoutingModule } from './app-routing.module';
+
+// Layouts
+import { FullLayoutComponent } from './layouts/full-layout.component';
+import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 
 @NgModule({
   imports: [
-    AppRoutingModule,
     BrowserModule,
-    DashboardModule, //eager loading
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
-    AboutMeComponent,
-    ChequeListComponent,
-    ChequeDetailComponent,
+    FullLayoutComponent,
+    SimpleLayoutComponent,
   ],
   providers: [
-    ChequeService,
+    //SomeService,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  // Diagnostic only: inspect router configuration
+  // constructor(router: Router) {
+  //   console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  // }
+}

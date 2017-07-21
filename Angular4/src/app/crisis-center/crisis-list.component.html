@@ -1,0 +1,22 @@
+<!--<ul class="items">
+    <li *ngFor="let crisis of crises | async" (click)="onSelect(crisis)" [class.selected]="isSelected(crisis)">
+        <span class="badge">{{ crisis.id }}</span> {{ crisis.name }}
+    </li>
+</ul>-->
+<table class="table table-striped table-hover crisis">
+    <thead>
+        <tr>
+            <th>#</th>
+            <!--<th>ID</th>-->
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of crises | async; let i = index" (click)="onSelect(item)">
+            <td>{{i+1}}</td>
+            <!--<td>{{item.id}}</td>-->
+            <td>{{item.name}}</td>
+        </tr>
+    </tbody>
+</table>
+<router-outlet></router-outlet>

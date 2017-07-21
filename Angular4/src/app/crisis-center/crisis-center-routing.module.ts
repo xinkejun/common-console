@@ -18,14 +18,14 @@ const crisisCenterRoutes: Routes = [
         path: '',
         component: CrisisListComponent,
         children: [
-          //   {
-          //     path: ':id',
-          //     component: CrisisDetailComponent,
-          //     canDeactivate: [CanDeactivateGuard],
-          //     resolve: {
-          //       crisis: CrisisDetailResolver
-          //     }
-          //   },
+          {
+            path: ':id',
+            component: CrisisDetailComponent,
+            // canDeactivate: [CanDeactivateGuard],
+            // resolve: {
+            //   crisis: CrisisDetailResolver
+            // }
+          },
           {
             path: '',
             component: CrisisCenterHomeComponent

@@ -1,34 +1,25 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit }      from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
-import { Observable }            from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 import { Crisis, CrisisService } from './crisis.service';
 
 @Component({
-  template: `
-    <ul class="items">
-      <li *ngFor="let crisis of crises | async"
-        (click)="onSelect(crisis)"
-        [class.selected]="isSelected(crisis)">
-          <span class="badge">{{ crisis.id }}</span>
-          {{ crisis.name }}
-      </li>
-    </ul>
-
-    <router-outlet></router-outlet>
-  `
+  templateUrl: 'crisis-list.component.html',
+  styleUrls: ['crisis-list.component.css'],
 })
 export class CrisisListComponent implements OnInit {
   crises: Observable<Crisis[]>;
+  //crises: Crisis[];
   selectedId: number;
 
   constructor(
     private service: CrisisService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   isSelected(crisis: Crisis) {
     return crisis.id === this.selectedId;
@@ -36,10 +27,12 @@ export class CrisisListComponent implements OnInit {
 
   ngOnInit() {
     this.crises = this.route.paramMap
-      .switchMap((params: ParamMap) => {
-        this.selectedId = +params.get('id');
+      .switchMap((pm: ParamMap) => {
+        this.selectedId = +pm.get('id');
         return this.service.getCrises();
       });
+    //this.service.getCrises().then(arr => this.crises = arr);;
+
   }
 
   onSelect(crisis: Crisis) {
