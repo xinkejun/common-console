@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -20,6 +21,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
   ],

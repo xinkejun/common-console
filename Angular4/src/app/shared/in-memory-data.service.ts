@@ -18,6 +18,13 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 12, name: 'Ivy Xin', date: new Date(2009, 3, 14), amount: 33333.335 },
     ];
 
-    return { cheques };
+    const items = {
+      "results": [
+        "Item 1",
+        "Item 2",
+      ]
+    }
+
+    return { cheques, items };
   }
 }
