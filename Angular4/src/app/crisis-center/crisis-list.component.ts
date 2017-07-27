@@ -32,12 +32,10 @@ export class CrisisListComponent implements OnInit {
         return this.service.getCrises();
       });
     //this.service.getCrises().then(arr => this.crises = arr);;
-
   }
 
   onSelect(crisis: Crisis) {
     this.selectedId = crisis.id;
-
     // Navigate with relative link
     this.router.navigate([crisis.id], { relativeTo: this.route });
   }

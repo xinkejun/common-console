@@ -9,6 +9,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/in-memory-data.service';
 
 import { AppComponent } from './app.component';
+import { HttpClientComponent } from './http-client/http-client.component';
 
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
@@ -22,13 +23,14 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    //InMemoryWebApiModule.forRoot(InMemoryDataService), //this will intecept webapi call cause error in @http
     AppRoutingModule,
   ],
   declarations: [
     AppComponent,
     FullLayoutComponent,
     SimpleLayoutComponent,
+    HttpClientComponent,
   ],
   providers: [
     //SomeService,

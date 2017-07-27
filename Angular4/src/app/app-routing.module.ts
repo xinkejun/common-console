@@ -7,6 +7,8 @@ import { SelectivePreloadingStrategy } from './shared/selective-preloading-strat
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 
+import { HttpClientComponent } from './http-client/http-client.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
         loadChildren: './cheques/cheques.module#ChequesModule',
       },
       {
+        path: 'http-client',
+        loadChildren: './http-client/http-client.module#HttpClientModule',
+      },
+      {
+        path: 'admin',
+        loadChildren: './admin/admin.module#AdminModule',
+      },
+      {
         path: 'about-me',
         loadChildren: './about-me/about-me.module#AboutMeModule',
       },
@@ -37,16 +47,14 @@ const routes: Routes = [
   },
   {
     path: 'pages',
-    component: FullLayoutComponent, //SimpleLayoutComponent,FullLayoutComponent
-    data: {
-      title: 'Pages'
-    },
-    children: [
-      {
-        path: '',
-        loadChildren: './pages/pages.module#PagesModule',
-      }
-    ]
+    component: SimpleLayoutComponent, //SimpleLayoutComponent,FullLayoutComponent
+    loadChildren: './pages/pages.module#PagesModule',
+    // children: [
+    //   {
+    //     path: '',
+    //     loadChildren: './pages/pages.module#PagesModule',
+    //   }
+    // ]
   },
   { path: '**', redirectTo: 'pages/404' }
 ];

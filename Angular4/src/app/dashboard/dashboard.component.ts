@@ -6,26 +6,22 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+
   results: string[];
+  private testUrl = 'http://xfxwebapp01.azurewebsites.net/ashx/iphandler.ashx';
+
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    var aaa = this.http.get('/api/cheques')
-    //.toPromise()
-    //.then(response => response.json().data)
-    //alert(JSON.stringify(aaa));
-    //.then(response => response.json().data as Cheque)
 
-    this.http.get('/api/items.txt').subscribe(data => {
-      //this.results = data['results'];
-      //alert(JSON.stringify(data));
-    });
+    //let headers = new Headers({ 'Content-Type': 'text/plain' });
+
+    this.http.get(this.testUrl)
+      .subscribe(resp => {
+        //this.results = resp['results'];
+        console.log(resp);
+      });
   }
 
-  // getCheques(): Promise<Cheque[]> {
-  //   return this.http.get(this.chequesUrl)
-  //     .toPromise()
-  //     .then(response => response.json().data as Cheque[])
-  // }
 }

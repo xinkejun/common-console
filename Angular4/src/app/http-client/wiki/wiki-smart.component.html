@@ -1,0 +1,6 @@
+<h2>Smarter Wikipedia Demo</h2>
+<p>Search when typing stops</p>
+<input #term (keyup)="search(term.value)" />
+<ul>
+    <li *ngFor="let item of items | async">{{item}}</li>
+</ul>

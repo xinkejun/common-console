@@ -1,0 +1,13 @@
+<h2>Heros (Promise to Array)</h2>
+<ul>
+    <li *ngFor="let hero of heroesArray">
+        <span class="badge">{{ hero.id }}</span> {{ hero.name }}
+    </li>
+</ul>
+<h2>Heros (Promise to Observable)</h2>
+<ul>
+    <li *ngFor="let hero of heroesObservable | async">
+        <span class="badge">{{ hero.id }}</span> {{ hero.name }}
+    </li>
+</ul>
+<button routerLink="/sidekicks">Go to sidekicks</button>

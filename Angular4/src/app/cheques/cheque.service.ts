@@ -1,29 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-//import 'rxjs/add/operator/toPromise';
-
 import { Cheque } from './cheque.model';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ChequeService {
 
-    private headers = new Headers({ 'Content-Type': 'application/json' });
-    private chequesUrl = 'api/cheques';  // URL to web api
+    //private headers = new Headers({ 'Content-Type': 'application/json' });
+    private chequesUrl = 'http://xfxwebapp01.azurewebsites.net/json/cheques.json';  // URL to web api
 
     constructor(private http: Http) { }
 
     getCheques(): Promise<Cheque[]> {
         return this.http.get(this.chequesUrl)
             .toPromise()
-            .then(response => response.json().data as Cheque[])
+            .then(resp => resp.json().data as Cheque[])
     }
 
     getCheque(id: number): Promise<Cheque> {
-        const url = `${this.chequesUrl}/${id}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json().data as Cheque)
+        // const url = `${this.chequesUrl}/${id}`;
+        // return this.http.get(url)
+        //     .toPromise()
+        //     .then(response => response.json().data as Cheque)
+        return this.getCheques()
+            .then(arr => arr.find(c => c.id === +id));
     }
 
     getChequeAmountText(amount: number): string {

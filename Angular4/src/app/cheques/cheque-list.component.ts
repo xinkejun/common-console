@@ -4,15 +4,15 @@ import { Router } from '@angular/router';
 import { Cheque } from './cheque.model';
 import { ChequeService } from './cheque.service';
 
-import 'rxjs/add/operator/toPromise';
-
 @Component({
     selector: 'cheque-list',
     templateUrl: './cheque-list.component.html',
     styleUrls: ['./cheque-list.component.css'],
 })
 export class ChequeListComponent implements OnInit {
+
     cheques: Cheque[];
+    
     constructor(
         private chequeService: ChequeService,
         private router: Router

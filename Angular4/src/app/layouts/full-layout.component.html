@@ -13,18 +13,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="/users">Users</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/settings">Settings</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/cheques">Cheques</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/crisis-center">Crisis Center</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Http Client<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a routerLink="/http-client/no-http">No Http</a></li>
+            <li><a routerLink="/http-client/http">@angular/http</a></li>
+            <li><a routerLink="/http-client/wiki">Wiki</a></li>
+            <li><a routerLink="/http-client/wiki-smart">Wiki Smart</a></li>
+            <li><a routerLink="/http-client/common-http">@angular/common/http</a></li>
+          </ul>
+        </li>
+        <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li routerLinkActive="active"><a routerLink="/about-me">About me</a></li>

@@ -1,0 +1,25 @@
+<h2>Heroes (Promise to Array)</h2>
+<ul>
+  <li *ngFor="let hero of heroesArrayP">{{hero.name}}</li>
+</ul>
+<label>New hero name: <input #newHeroNameP /></label>
+<button (click)="addHeroPromise(newHeroNameP.value); newHeroNameP.value=''">Add Hero</button>
+
+<h2>Heroes (Observable to Array)</h2>
+<ul>
+  <li *ngFor="let hero of heroesArrayO">{{hero.name}}</li>
+</ul>
+<label>New hero name: <input #newHeroNameO /></label>
+<button (click)="addHeroObservable(newHeroNameO.value); newHeroNameO.value=''">Add Hero</button>
+
+<h2>Heroes (Promise to Observable)</h2>
+<ul>
+  <li *ngFor="let hero of heroesObservableP | async">{{hero.name}}</li>
+</ul>
+
+<h2>Heroes (Observable to Observable)</h2>
+<ul>
+  <li *ngFor="let hero of heroesObservableO | async">{{hero.name}}</li>
+</ul>
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
