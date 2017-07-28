@@ -1,22 +1,30 @@
 <?xml version="1.0"?>
-<configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
+<configuration>
 	<configSections>
 	</configSections>
 	<appSettings>
 	</appSettings>
 	<system.webServer>
-	  <rewrite>
-  		<rules>
-	  	  <rule name="Angular Routes" stopProcessing="true">
-		  	  <match url=".*" />
-  			  <conditions logicalGrouping="MatchAll">
-  	  		  <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
-			      <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+		<rewrite>
+			<rules>
+				<rule name="Angular Routes" stopProcessing="true">
+					<match url=".*" />
+					<conditions logicalGrouping="MatchAll">
+					<add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+					  <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
 
-			    </conditions>
-			    <action type="Rewrite" url="/" />
-		    </rule>
+					</conditions>
+					<action type="Rewrite" url="/" />
+				</rule>
 		  </rules>
-	  </rewrite>
+		</rewrite>
+		<httpProtocol>
+			<customHeaders>
+				<add name="Access-Control-Allow-Origin" value="*" />
+			</customHeaders>
+		</httpProtocol>
+		<staticContent>
+			<mimeMap fileExtension=".json" mimeType="application/json" />
+		</staticContent>
 	</system.webServer>
 </configuration>
