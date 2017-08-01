@@ -1,3 +1,5 @@
+// https://angular.io/guide/router
+// https://angular.cn/docs/ts/latest/guide/router.html
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
@@ -7,9 +9,8 @@ import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class AuthService {
-  
-  isLoggedIn = false;
 
+  isLoggedIn = false;
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
@@ -20,4 +21,5 @@ export class AuthService {
   logout(): void {
     this.isLoggedIn = false;
   }
+
 }

@@ -1,41 +1,47 @@
 import { NgModule } from '@angular/core';
+// Do not import BrowserModule in any other module. Feature modules and lazy-loaded modules should import CommonModule instead. They need the common directives. They don't need to re-install the app-wide providers.
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './shared/in-memory-data.service';
-
+// Components
 import { AppComponent } from './app.component';
-import { HttpClientComponent } from './http-client/http-client.component';
 
-// Routing Module
+// Modules
+import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
-
-// Layouts
-import { FullLayoutComponent } from './layouts/full-layout.component';
-import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 
 @NgModule({
   imports: [
+    // Import only BrowserModule in the root AppModule.
+    // BrowserModule throws an error if you try to lazy load a module that imports it.
     BrowserModule,
-    HttpModule,
-    HttpClientModule,
     //InMemoryWebApiModule.forRoot(InMemoryDataService), //this will intecept webapi call cause error in @http
+    CoreModule, //CoreModule.forRoot({userName: 'Miss Marple'}),
     AppRoutingModule,
   ],
   declarations: [
+    // Add declarable classes—components, directives, and pipes—to a declarations list.
+    // Declare these classes in exactly one module of the application. Declare them in this module if they belong to this module.
+    // Do not add NgModel—or the FORMS_DIRECTIVES—to the AppModule metadata's declarations. These directives belong to the FormsModule.
     AppComponent,
-    FullLayoutComponent,
-    SimpleLayoutComponent,
-    HttpClientComponent,
+    //FullLayoutComponent,
+    //SimpleLayoutComponent,
   ],
   providers: [
-    //SomeService,
+    // Register application-wide providers in the root AppModule, not in the AppComponent.
   ],
-  bootstrap: [AppComponent]
+
+  bootstrap: [AppComponent],
+
+  //exports: [AppComponent],
+
+  // Angular automatically adds the following types of components to the module's entryComponents:
+  // - The component in the @NgModule.bootstrap list.
+  // - Components referenced in router configuration.
+  // You don't have to mention these components explicitly, although doing so is harmless.
+  // A bootstrapped component is an entry component that Angular loads into the DOM during the bootstrap (application launch) process. Other entry components are loaded dynamically by other means, such as with the router.
+  // The @NgModule.bootstrap property tells the compiler that this is an entry component and it should generate code to bootstrap the application with this component.
+  // There's no need to list a component in both the bootstrap and entryComponent lists, although doing so is harmless.
+  //entryComponents: [AppComponent],
 })
 export class AppModule {
   // Diagnostic only: inspect router configuration

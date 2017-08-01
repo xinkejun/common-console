@@ -5,8 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './simple-layout.component.html'
 })
 export class SimpleLayoutComponent implements OnInit {
-
-  //constructor() { }
+  constructor() { }
 
   ngOnInit(): void { }
 }

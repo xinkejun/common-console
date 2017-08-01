@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { Observable } from 'rxjs/Observable';
-
-import { SelectivePreloadingStrategy } from '../shared/selective-preloading-strategy';
-
 import 'rxjs/add/operator/map';
+
+import { SelectivePreloadingStrategy } from '../core/selective-preloading-strategy';
 
 @Component({
   template: `

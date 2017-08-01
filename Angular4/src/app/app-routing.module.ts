@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SelectivePreloadingStrategy } from './shared/selective-preloading-strategy';
+import { SelectivePreloadingStrategy } from './core/selective-preloading-strategy';
 
 // Layouts
-import { FullLayoutComponent } from './layouts/full-layout.component';
-import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+import { FullLayoutComponent } from './core/layouts/full-layout.component';
+import { SimpleLayoutComponent } from './core/layouts/simple-layout.component';
 
 import { HttpClientComponent } from './http-client/http-client.component';
 
@@ -60,6 +60,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  // Never call RouterModule.forRoot in a feature-routing module.
   imports: [RouterModule.forRoot(
     routes,
     {

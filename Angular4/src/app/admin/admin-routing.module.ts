@@ -6,7 +6,7 @@ import { AdminDashboardComponent } from './admin-dashboard.component';
 import { ManageCrisesComponent } from './manage-crises.component';
 import { ManageHeroesComponent } from './manage-heroes.component';
 
-import { AuthGuard } from '../shared/auth-guard.service';
+import { AuthGuard } from '../core/auth-guard.service';
 
 const adminRoutes: Routes = [
   {
@@ -31,8 +31,6 @@ const adminRoutes: Routes = [
   imports: [
     RouterModule.forChild(adminRoutes)
   ],
-  exports: [
-    RouterModule
-  ]
+  //exports: [RouterModule]
 })
 export class AdminRoutingModule { }
