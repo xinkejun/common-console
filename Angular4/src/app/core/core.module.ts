@@ -53,8 +53,8 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
         // Do put a singleton service whose instance will be shared throughout the application in the CoreModule (e.g. ExceptionService and LoggerService).
         AppConfig,
         AuthGuard,
-        AlertService,
         AuthenticationService,
+        AlertService,
         UserService,
         //LoggerService,
         //SpinnerService

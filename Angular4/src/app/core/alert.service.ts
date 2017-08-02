@@ -7,24 +7,24 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AlertService {
-
+    //private observable = new Observable<any>();
     private subject = new Subject<any>();
     private keepAfterNavigationChange = false;
 
-    constructor(private router: Router) {
-        // clear alert message on route change
-        router.events.subscribe(event => {
-            if (event instanceof NavigationStart) {
-                if (this.keepAfterNavigationChange) {
-                    // only keep for a single location change
-                    this.keepAfterNavigationChange = false;
-                } else {
-                    // clear alert
-                    this.subject.next();
-                }
-            }
-        });
-    }
+    // constructor(private router: Router) {
+    //     //clear alert message on route change
+    //     router.events.subscribe(event => {
+    //         if (event instanceof NavigationStart) {
+    //             if (this.keepAfterNavigationChange) {
+    //                 // only keep for a single location change
+    //                 this.keepAfterNavigationChange = false;
+    //             } else {
+    //                 // clear alert
+    //                 this.subject.next();
+    //             }
+    //         }
+    //     });
+    // }
 
     success(message: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
@@ -37,7 +37,7 @@ export class AlertService {
     }
 
     getMessage(): Observable<any> {
+        //return this.observable;
         return this.subject.asObservable();
     }
-
 }

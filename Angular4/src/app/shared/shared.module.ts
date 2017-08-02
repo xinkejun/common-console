@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { AlertComponent } from './alert.component';
+
 // import { FilterTextComponent } from './filter-text/filter-text.component';
 // import { FilterTextService } from './filter-text/filter-text.service';
 // import { InitCapsPipe } from './init-caps.pipe';
@@ -17,14 +19,14 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     // Do import all modules required by the assets in the SharedModule; for example, CommonModule and FormsModule.
-    //CommonModule,
+    CommonModule,
     // As it happens, the components declared by SharedModule itself don't bind with [(ngModel)]. Technically, there is no need for SharedModule to import FormsModule.
     // SharedModule can still export FormsModule without listing it among its imports.
     //FormsModule,
   ],
   declarations: [
     // Do declare components, directives, and pipes in a shared module when those items will be re-used and referenced by the components declared in other feature modules.
-
+    AlertComponent,
     //FilterTextComponent,
     //InitCapsPipe,
 
@@ -43,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
 
+    AlertComponent,
     //FilterTextComponent,
     //InitCapsPipe
 

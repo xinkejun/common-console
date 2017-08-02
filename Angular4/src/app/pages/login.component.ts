@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // reset login status
-    this.authenticationService.logout();
+    this.authenticationService.removeUserStorage();
     // get return url from route parameters or default to '/'
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
@@ -30,10 +30,15 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
       value => {
-        this.router.navigate([this.returnUrl]);
+        //console.log(value.access_token);
+        this.alertService.success(value.access_token);
+        this.authenticationService.addUserStorage(JSON.stringify(value.access_token));
+        //this.router.navigate([this.returnUrl]);
       },
       error => {
-        this.alertService.error('Username or password is incorrect');
+        let errDesc = error.error.error_description;
+        //console.log(error.error.error_description);
+        this.alertService.error(errDesc);
         this.loading = false;
       });
   }
