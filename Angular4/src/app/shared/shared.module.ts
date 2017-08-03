@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { AlertComponent } from './alert.component';
+//import { AlertComponent } from './alert.component';
 
 // import { FilterTextComponent } from './filter-text/filter-text.component';
 // import { FilterTextService } from './filter-text/filter-text.service';
@@ -26,7 +26,7 @@ import { AlertComponent } from './alert.component';
   ],
   declarations: [
     // Do declare components, directives, and pipes in a shared module when those items will be re-used and referenced by the components declared in other feature modules.
-    AlertComponent,
+    //AlertComponent,
     //FilterTextComponent,
     //InitCapsPipe,
 
@@ -45,7 +45,7 @@ import { AlertComponent } from './alert.component';
     CommonModule,
     FormsModule,
 
-    AlertComponent,
+    //AlertComponent,
     //FilterTextComponent,
     //InitCapsPipe
 

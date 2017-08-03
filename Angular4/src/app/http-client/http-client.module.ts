@@ -9,7 +9,7 @@ import { WikiComponent } from './wiki/wiki.component';
 import { WikiSmartComponent } from './wiki/wiki-smart.component';
 import { CommonHttpComponent } from './common-http/common-http.component';
 
-import { NoopInterceptor } from './common-http/noop-interceptor.service';
+//import { NoopInterceptor } from './common-http/noop-interceptor.service';
 
 import { HttpClientRoutingModule } from './http-client-routing.module';
 
@@ -26,10 +26,10 @@ import { HttpClientRoutingModule } from './http-client-routing.module';
     WikiSmartComponent,
     CommonHttpComponent,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: NoopInterceptor,
-    multi: true,
-  }],
+  // providers: [{
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: NoopInterceptor,
+  //   multi: true,
+  // }],
 })
 export class HttpClientModule { }

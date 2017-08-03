@@ -4,16 +4,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+//import 'rxjs/add/operator/map'
 
-import { AppConfig } from '../app.config';
+import { AppConfig } from '../../app.config';
 
 interface TokenResponse {
-  access_token: string;
+    access_token: string;
 }
 
 @Injectable()
-export class AuthenticationService {
+export class AuthService {
     constructor(
         private http: HttpClient,
         private config: AppConfig,
@@ -22,16 +22,26 @@ export class AuthenticationService {
     login(username: string, password: string) {
         let body = "grant_type=password&username=" + username + "&password=" + password;
         let headers = new HttpHeaders()
-            .set('Content-Type', 'application/x-www-form-urlencoded');
+        //.set('Content-Type', 'application/x-www-form-urlencoded');
+        //console.log(headers);
         return this.http.post<TokenResponse>(this.config.apiBaseUrl + '/token', body, { headers: headers });
     }
 
-    addUserStorage(data) {
+    addUserStorage(data: string) {
         localStorage.setItem('currentUser', data);
     }
 
     removeUserStorage() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+
+    getAuthHeader() {
+        // create authorization header with token
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.access_token) {
+            return 'Bearer ' + currentUser.access_token;
+        }
+        return null;
     }
 }

@@ -10,11 +10,11 @@ export class NoopInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        // This is a duplicate. It is exactly the same as the original.
-        const dupReq = req.clone();
+        // // This is a duplicate. It is exactly the same as the original.
+        // const dupReq = req.clone();
 
-        // Change the URL and replace 'http://' with 'https://'
-        const secureReq = req.clone({ url: req.url.replace('http://', 'https://') });
+        // // Change the URL and replace 'http://' with 'https://'
+        // const secureReq = req.clone({ url: req.url.replace('http://', 'https://') });
 
         return next.handle(req);
     }

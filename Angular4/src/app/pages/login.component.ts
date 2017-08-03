@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthenticationService } from '../core/authentication.service';
+import { AuthService } from '../core/auth/auth.service';
 import { AlertService } from '../core/alert.service';
 
 @Component({
@@ -15,30 +15,31 @@ export class LoginComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService) { }
+    private authService: AuthService,
+    private alertService: AlertService,
+  ) { }
 
   ngOnInit() {
     // reset login status
-    this.authenticationService.removeUserStorage();
+    this.authService.removeUserStorage();
     // get return url from route parameters or default to '/'
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onSubmit() {
     this.loading = true;
-    this.authenticationService.login(this.model.username, this.model.password)
+    this.authService.login(this.model.username, this.model.password)
       .subscribe(
       value => {
         //console.log(value.access_token);
-        this.alertService.success(value.access_token);
-        this.authenticationService.addUserStorage(JSON.stringify(value.access_token));
-        //this.router.navigate([this.returnUrl]);
+        //this.alertService.sendSuccessMessage(value.access_token, true);
+        this.authService.addUserStorage(JSON.stringify(value));
+        this.router.navigate([this.returnUrl]);
       },
       error => {
+        //console.log(error);
         let errDesc = error.error.error_description;
-        //console.log(error.error.error_description);
-        this.alertService.error(errDesc);
+        this.alertService.sendErrorMessage(errDesc);
         this.loading = false;
       });
   }

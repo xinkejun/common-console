@@ -11,21 +11,20 @@ import { CommonModule } from '@angular/common';
 //import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 // Services
-import { AppConfig } from '../app.config';
-import { UserService } from './user.service';
-import { AuthGuard } from './auth-guard.service';
 import { AlertService } from './alert.service';
-import { AuthenticationService } from './authentication.service';
+import { AppConfig } from '../app.config';
+import { AuthGuard, AuthInterceptor, AuthService } from './auth';
+import { UserService } from './user.service';
 //import { InMemoryDataService } from './in-memory-data.service';
 
 // Components
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
-//import { AlertComponent } from './_directives/index';
+import { AlertComponent } from './alert.component';
 
 // import { LoggerService } from './logger.service';
 // import { NavComponent } from './nav/nav.component';
@@ -45,22 +44,29 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
         // Do gather application-wide, single use components in the CoreModule. Import it once (in the AppModule) when the app starts and never import it anywhere else. (e.g. NavComponent and SpinnerComponent).
         FullLayoutComponent,
         SimpleLayoutComponent,
+        AlertComponent,
         //NavComponent,
         //SpinnerComponent
         //TitleComponent
     ],
     providers: [
         // Do put a singleton service whose instance will be shared throughout the application in the CoreModule (e.g. ExceptionService and LoggerService).
+        AlertService,
         AppConfig,
         AuthGuard,
-        AuthenticationService,
-        AlertService,
+        AuthService,
         UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
         //LoggerService,
         //SpinnerService
     ],
     exports: [
         // Do export all symbols from the CoreModule that the AppModule will import and make available for other feature modules to use.
+        //AlertComponent,
         //FullLayoutComponent,
         //SimpleLayoutComponent,
         //NavComponent,

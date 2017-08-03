@@ -1,13 +1,13 @@
 <div class="col-lg-4 col-md-3"></div>
 <div class="col-lg-4 col-md-6">
-    <app-alert></app-alert>
+    <!--<app-alert></app-alert>-->
     <form class="form-horizontal" #f="ngForm" (ngSubmit)="onSubmit()">
         <fieldset>
             <legend>Login</legend>
             <div class="form-group" [ngClass]="{ 'has-error': !(username.valid || username.pristine) }">
                 <label for="inputEmail" class="col-lg-2 control-label">Username</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputUsername" placeholder="Email" name="username" [(ngModel)]="model.username"
+                    <input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username" [(ngModel)]="model.username"
                         #username="ngModel" required />
                     <div [hidden]="username.valid || username.pristine" class="alert alert-danger">Username is required</div>
                 </div>
