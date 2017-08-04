@@ -7,13 +7,15 @@ import { SelectivePreloadingStrategy } from './core/selective-preloading-strateg
 import { FullLayoutComponent } from './core/layouts/full-layout.component';
 import { SimpleLayoutComponent } from './core/layouts/simple-layout.component';
 
-import { HttpClientComponent } from './http-client/http-client.component';
+import { AuthGuard } from './core/auth/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: '',
     component: FullLayoutComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     data: {
       title: 'Home'
     },
