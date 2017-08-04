@@ -15,7 +15,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-//import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 // Components
 import { FullLayoutComponent } from './layouts/full-layout.component';
@@ -27,11 +26,6 @@ import { AlertService } from './alert.service';
 import { AppConfig } from '../app.config';
 import { AuthGuard, AuthInterceptor, AuthService } from './auth';
 import { UserService } from './user.service';
-// import { InMemoryDataService } from './in-memory-data.service';
-// import { LoggerService } from './logger.service';
-// import { NavComponent } from './nav/nav.component';
-// import { SpinnerComponent } from './spinner/spinner.component';
-// import { SpinnerService } from './spinner/spinner.service';
 
 @NgModule({
     imports: [
@@ -47,9 +41,6 @@ import { UserService } from './user.service';
         FullLayoutComponent,
         SimpleLayoutComponent,
         AlertComponent,
-        //NavComponent,
-        //SpinnerComponent
-        //TitleComponent
     ],
     providers: [
         // Do put a singleton service whose instance will be shared throughout the application in the CoreModule (e.g. ExceptionService and LoggerService).
@@ -63,17 +54,9 @@ import { UserService } from './user.service';
             useClass: AuthInterceptor,
             multi: true,
         },
-        //LoggerService,
-        //SpinnerService
     ],
     exports: [
         // Do export all symbols from the CoreModule that the AppModule will import and make available for other feature modules to use.
-        //AlertComponent,
-        //FullLayoutComponent,
-        //SimpleLayoutComponent,
-        //NavComponent,
-        //SpinnerComponent
-        //TitleComponent
     ],
 })
 export class CoreModule {
@@ -84,13 +67,4 @@ export class CoreModule {
             throw new Error('CoreModule is already loaded. Import it in the AppModule only');
         }
     }
-
-    // static forRoot(config: UserServiceConfig): ModuleWithProviders {
-    //     return {
-    //         ngModule: CoreModule,
-    //         providers: [
-    //             //{ provide: UserServiceConfig, useValue: config }
-    //         ]
-    //     };
-    // }
 }

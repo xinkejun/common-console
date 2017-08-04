@@ -16,14 +16,12 @@ export class AuthInterceptor implements HttpInterceptor {
         return next.handle(authReq)
             .do(event => {
                 if (event instanceof HttpResponse) {
-                    //const elapsed = Date.now() - started;
                     //console.log('%c Request for ' + this.fixUrl(req.urlWithParams) + ' took ' + elapsed + ' ms.', 'background: #222; color: yellow');
                 }
             },
             err => {
                 if (err instanceof HttpErrorResponse && err.status == 401) {
                     // handle 401 errors
-                    //alert("401");
                     this.router.navigate(['./pages/login']);
                 }
             });

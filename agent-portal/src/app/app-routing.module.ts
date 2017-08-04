@@ -22,40 +22,16 @@ import { AuthGuard } from './core/auth/auth-guard.service';
 import { SelectivePreloadingStrategy } from './core/selective-preloading-strategy';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'loans', pathMatch: 'full' },
   {
     path: '',
     component: FullLayoutComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
-    data: {
-      title: 'Home'
-    },
     children: [
       {
-        path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
-      },
-      {
-        path: 'crisis-center',
-        loadChildren: './crisis-center/crisis-center.module#CrisisCenterModule',
-        //data: { preload: true }
-      },
-      {
-        path: 'cheques',
-        loadChildren: './cheques/cheques.module#ChequesModule',
-      },
-      {
-        path: 'http-client',
-        loadChildren: './http-client/http-client.module#HttpClientModule',
-      },
-      {
-        path: 'admin',
-        loadChildren: './admin/admin.module#AdminModule',
-      },
-      {
-        path: 'about-me',
-        loadChildren: './about-me/about-me.module#AboutMeModule',
+        path: 'loans',
+        loadChildren: './loans/loans.module#LoansModule'
       },
     ]
   },
@@ -63,12 +39,6 @@ const routes: Routes = [
     path: 'pages',
     component: SimpleLayoutComponent,
     loadChildren: './pages/pages.module#PagesModule',
-    // children: [
-    //   {
-    //     path: '',
-    //     loadChildren: './pages/pages.module#PagesModule',
-    //   }
-    // ]
   },
   { path: '**', redirectTo: 'pages/404' }
 ];

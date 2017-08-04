@@ -1,6 +1,4 @@
-﻿// https://www.pointblankdevelopment.com.au/blog/113/aspnet-core-angular-24-user-registration-and-login-tutorial-example
-import { Injectable } from '@angular/core';
-//import { Http, Headers, Response } from '@angular/http';
+﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from 'rxjs/Observable';
 
@@ -20,8 +18,6 @@ export class AuthService {
     login(username: string, password: string) {
         let body = "grant_type=password&username=" + username + "&password=" + password;
         let headers = new HttpHeaders()
-        //.set('Content-Type', 'application/x-www-form-urlencoded');
-        //console.log(headers);
         return this.http.post<TokenResponse>(this.config.apiBaseUrl + '/token', body, { headers: headers });
     }
 

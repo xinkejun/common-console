@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
-// Do not import BrowserModule in any other module. Feature modules and lazy-loaded modules should import CommonModule instead. They need the common directives. They don't need to re-install the app-wide providers.
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 // Components
 import { AppComponent } from './app.component';
@@ -10,21 +9,22 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  imports: [
-    // Import only BrowserModule in the root AppModule.
-    // BrowserModule throws an error if you try to lazy load a module that imports it.
-    BrowserModule,
-    //InMemoryWebApiModule.forRoot(InMemoryDataService), //this will intecept webapi call cause error in @http
-    CoreModule, //CoreModule.forRoot({userName: 'Miss Marple'}),
-    AppRoutingModule,
-  ],
   declarations: [
     // Add declarable classes—components, directives, and pipes—to a declarations list.
     // Declare these classes in exactly one module of the application. Declare them in this module if they belong to this module.
     // Do not add NgModel—or the FORMS_DIRECTIVES—to the AppModule metadata's declarations. These directives belong to the FormsModule.
     AppComponent,
-    //FullLayoutComponent,
-    //SimpleLayoutComponent,
+  ],
+  imports: [
+    // Do not import BrowserModule in any other module. Feature modules and lazy-loaded modules should import CommonModule instead. They need the common directives. They don't need to re-install the app-wide providers.
+    // Import only BrowserModule in the root AppModule.
+    // BrowserModule throws an error if you try to lazy load a module that imports it.
+    BrowserModule,
+    // Create a CoreModule with providers for the singleton services you load when the application starts.
+    // Import CoreModule in the root AppModule only. Never import CoreModule in any other module.
+    // Avoid importing the CoreModule anywhere except in the AppModule.
+    CoreModule,
+    AppRoutingModule,
   ],
   providers: [
     // Register application-wide providers in the root AppModule, not in the AppComponent.

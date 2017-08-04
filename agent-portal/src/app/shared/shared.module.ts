@@ -1,12 +1,3 @@
-// SharedModule is widget module
-/*
-A widget module makes components, directives, and pipes available to external modules.
-CommonModule and SharedModule are widget modules. Many third-party UI component libraries are widget modules.
-A widget module should consist entirely of declarations, most of them exported.
-A widget module should rarely have providers. If you deviate from this guideline, know what you're doing and why.
-Import widget modules in any module whose component templates need the widgets.
-*/
-
 // Create a SharedModule with the components, directives, and pipes that you use everywhere in your app. This module should consist entirely of declarations, most of them exported.
 // The SharedModule may re-export other widget modules, such as CommonModule, FormsModule, and modules with the UI controls that you use most widely.
 // The SharedModule should not have providers for reasons explained previously. Nor should any of its imported or re-exported modules have providers. If you deviate from this guideline, know what you're doing and why.
@@ -16,22 +7,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-//import { AlertComponent } from './alert.component';
-
-// import { FilterTextComponent } from './filter-text/filter-text.component';
-// import { FilterTextService } from './filter-text/filter-text.service';
-// import { InitCapsPipe } from './init-caps.pipe';
-
-//import { AwesomePipe } from './awesome.pipe';
-//import { HighlightDirective } from './highlight.directive';
-
 @NgModule({
   imports: [
     // Do import all modules required by the assets in the SharedModule; for example, CommonModule and FormsModule.
-    //CommonModule,
+    CommonModule,
     // As it happens, the components declared by SharedModule itself don't bind with [(ngModel)]. Technically, there is no need for SharedModule to import FormsModule.
     // SharedModule can still export FormsModule without listing it among its imports.
-    //FormsModule,
+    FormsModule,
   ],
   declarations: [
     // Do declare components, directives, and pipes in a shared module when those items will be re-used and referenced by the components declared in other feature modules.
