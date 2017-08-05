@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params, ParamMap } from '@angular/router';
+
+import 'rxjs/add/operator/switchMap';
+
+import { LoanService } from '../loan.service';
 
 @Component({
   selector: 'app-loan-detail',
@@ -6,10 +11,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loan-detail.component.css']
 })
 export class LoanDetailComponent implements OnInit {
+  loand;
 
-  constructor() { }
+  constructor(
+    private loanService: LoanService,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.activatedRoute.params
+      .switchMap((p: Params) => this.loanService.getLoanMasterData(p['id']))
+      .subscribe(l => {
+        this.loand = l[0];
+      });
   }
-
 }

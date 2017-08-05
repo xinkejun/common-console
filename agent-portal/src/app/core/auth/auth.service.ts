@@ -20,7 +20,7 @@ export class AuthService {
         let headers = new HttpHeaders()
         return this.http.post<TokenResponse>(this.config.apiBaseUrl + '/token', body, { headers: headers });
     }
-
+    
     addUserStorage(data: string) {
         localStorage.setItem('currentUser', data);
     }

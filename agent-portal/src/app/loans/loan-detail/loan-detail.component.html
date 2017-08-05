@@ -1,3 +1,6 @@
-<p>
-  loan-detail works!
-</p>
+<h2>Loan Detail</h2>
+<div *ngIf="loand">
+  <p>Account No： {{loand.account_no}}</p>
+  <p>Purpose： {{loand.purpose}}</p>
+  <p>Status： {{loand.status}}</p>
+</div>
